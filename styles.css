@@ -1,0 +1,85 @@
+body{
+  text-align: center;
+  background-color: #000;
+}
+
+#title{
+  font-family: 'Oxanium', cursive;
+  font-size: 3rem;
+  margin: 5%;
+  color: #FEF2BF;
+}
+
+.container{
+  margin: auto;
+  max-width: 580px;
+}
+
+/* Start Button */
+/* Allows the start button to be in centre of buttons */
+.middle-row{
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.start-button{
+  background-color: #000;
+  color: white;
+  border: 2px solid #e7e7e7;
+  padding: 16px 32px;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-family: 'Oxanium', cursive;
+  font-weight: bold;
+  position: relative;
+  align-items: center;
+  border-radius: 15%;
+}
+
+.start-button:hover{
+  background-color: grey;
+}
+
+/* Cirle Buttons */
+.btn{
+  height:110px;
+  width: 110px;
+  border-radius: 50%;
+  background-color: #000;
+  display: inline-block;
+  margin: 15px;
+}
+
+.green{
+  border: 10px solid #228B22;
+}
+
+.green-selected{
+  background-color: #228B22;
+}
+
+.red{
+  border: 10px solid #B22222;
+}
+
+.red-selected{
+  background-color: #B22222;
+}
+
+.yellow{
+  border: 10px solid #F9EB3A;
+}
+
+.yellow-selected{
+  background-color: #F9EB3A;
+}
+
+.blue{
+  border: 10px solid #5F9EA0;
+}
+
+.blue-selected{
+  background-color: #5F9EA0;
+}
