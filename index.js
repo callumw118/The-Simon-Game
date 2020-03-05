@@ -1,5 +1,6 @@
 var buttonColours = ["green", "red", "yellow", "blue"];
 var gamePattern = [];
+var userPattern = [];
 
 function nextSequence() {
   //Generates random number between 0-3
@@ -20,7 +21,14 @@ function nextSequence() {
   //Plays the audio for the button that flashes
   var audio = new Audio("sounds/" + randomChosenColour + ".mp3");
   audio.play();
+
 }
+
+$(".btn").click(function(){
+  var chosenColour = $(this).attr("class");
+  userPattern.push(chosenColour);
+  console.log(userPattern);
+})
 
 
 
