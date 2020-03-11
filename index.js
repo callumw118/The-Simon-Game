@@ -27,7 +27,7 @@ function flash(colour) {
   $("." + colour).addClass(colour + "-selected");
 
   //Plays the sound for the colour that flahes
-  setTimeout(function(){
+  setTimeout(function() {
     playSound(colour);
   }, 100);
 
@@ -40,14 +40,14 @@ function flash(colour) {
 }
 
 //Plays the game pattern back to the user
-function animate(){
-  var i=0;
+function animate() {
+  var i = 0;
 
-  var interval = setInterval(function(){
+  var interval = setInterval(function() {
     flash(gamePattern[i]);
     i++;
 
-    if( i > gamePattern.length){
+    if (i > gamePattern.length) {
       clearInterval(interval);
     }
   }, 1000);
