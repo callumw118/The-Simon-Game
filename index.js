@@ -53,19 +53,18 @@ function animate(){
   }, 1000);
 }
 
-
-//Handles the button clicks - Stores the id of the button clicked as an array
-//Plays the sound and animation of button
-$(".btn").click(function() {
-  var chosenColour = $(this).attr("id");
-  userPattern.push(chosenColour);
-  flash(chosenColour);
-  correctMove(userPattern.length - 1);
-});
-
-
 //Detects when play button is pressed
 $(".start-button").click(function() {
+  //Handles the button clicks - Stores the id of the button clicked as an array
+  //Plays the sound and animation of button
+  $(".btn").click(function() {
+    var chosenColour = $(this).attr("id");
+    userPattern.push(chosenColour);
+    flash(chosenColour);
+    correctMove(userPattern.length - 1);
+  });
+
+  //Changes the play button to the counter
   $(this).replaceWith("<h1 class=counter>" + counter + "</h1>");
   nextSequence();
 });
