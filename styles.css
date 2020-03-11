@@ -1,29 +1,29 @@
-body{
+body {
   text-align: center;
   background-color: #000;
 }
 
-#title{
+#title {
   font-family: 'Oxanium', cursive;
   font-size: 3rem;
   margin: 5%;
   color: #FEF2BF;
 }
 
-.container{
+.container {
   margin: auto;
   max-width: 580px;
 }
 
 /* Start Button */
 /* Allows the start button to be in centre of buttons */
-.middle-row{
+.middle-row {
   align-items: center;
   display: flex;
   justify-content: space-around;
 }
 
-.start-button{
+.start-button {
   background-color: #000;
   color: white;
   border: 2px solid #e7e7e7;
@@ -38,13 +38,13 @@ body{
   border-radius: 15%;
 }
 
-.start-button:hover{
+.start-button:hover {
   background-color: grey;
 }
 
 /* Cirle Buttons */
-.btn{
-  height:110px;
+.btn {
+  height: 110px;
   width: 110px;
   border-radius: 50%;
   background-color: #000;
@@ -52,34 +52,48 @@ body{
   margin: 15px;
 }
 
-.green{
+.green {
   border: 10px solid #228B22;
 }
 
-.green-selected{
+.green-selected {
   background-color: #228B22;
 }
 
-.red{
+.red {
   border: 10px solid #B22222;
 }
 
-.red-selected{
+.red-selected {
   background-color: #B22222;
 }
 
-.yellow{
+.yellow {
   border: 10px solid #F9EB3A;
 }
 
-.yellow-selected{
+.yellow-selected {
   background-color: #F9EB3A;
 }
 
-.blue{
+.blue {
   border: 10px solid #5F9EA0;
 }
 
-.blue-selected{
+.blue-selected {
   background-color: #5F9EA0;
+}
+
+/* Animation for when user clicks button */
+.pressed {
+  transform: translateY(6px);
+}
+
+.counter{
+  color: white;
+  font-size: 3rem;
+}
+
+.game-over{
+  background-color: white;
 }

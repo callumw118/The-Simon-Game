@@ -1,6 +1,7 @@
 var buttonColours = ["green", "red", "yellow", "blue"];
 var gamePattern = [];
 var userPattern = [];
+var counter = 1;
 
 function nextSequence() {
   //Generates random number between 0-3
@@ -10,29 +11,109 @@ function nextSequence() {
   //Pushes colour of button to array which stores the game pattern
   gamePattern.push(randomChosenColour);
 
+  //Displays the game pattern to the user
+  animate();
+
+  //Reset users pattern to 0 so it can check the next order they input is correct
+  userPattern.splice(0, userPattern.length);
+  //Tells the user which level they are on
+  updateScore();
+}
+
+//Adds and then removes the CSS class to flash the button
+function flash(colour) {
+
   //Changes the background colour of the random button selected
-  $("." + randomChosenColour).addClass(randomChosenColour + "-selected");
+  $("." + colour).addClass(colour + "-selected");
+
+  //Plays the sound for the colour that flahes
+  setTimeout(function(){
+    playSound(colour);
+  }, 100);
 
   //Animates button by making the background colour black again making it flash
   setTimeout(function() {
-    $("." + randomChosenColour).removeClass(randomChosenColour + "-selected");
-  }, 400);
+    $("." + colour).removeClass(colour + "-selected");
+  }, 300);
 
-  //Plays the audio for the button that flashes
-  var audio = new Audio("sounds/" + randomChosenColour + ".mp3");
-  audio.play();
 
 }
 
-$(".btn").click(function(){
-  var chosenColour = $(this).attr("class");
+//Plays the game pattern back to the user
+function animate(){
+  var i=0;
+
+  var interval = setInterval(function(){
+    flash(gamePattern[i]);
+    i++;
+
+    if( i > gamePattern.length){
+      clearInterval(interval);
+    }
+  }, 1000);
+}
+
+
+//Handles the button clicks - Stores the id of the button clicked as an array
+//Plays the sound and animation of button
+$(".btn").click(function() {
+  var chosenColour = $(this).attr("id");
   userPattern.push(chosenColour);
-  console.log(userPattern);
-})
+  flash(chosenColour);
+  correctMove(userPattern.length - 1);
+});
 
 
+//Detects when play button is pressed
+$(".start-button").click(function() {
+  $(this).replaceWith("<h1 class=counter>" + counter + "</h1>");
+  nextSequence();
+});
 
 
+//Updates the counter in the middle telling the user which level they are
+function updateScore() {
+  $(".counter").replaceWith("<h1 class=counter>" + counter + "</h1>");
+  counter++;
+}
+
+
+//Plays the audio for the button that flashes
+function playSound(chosenColour) {
+
+  var audio = new Audio("sounds/" + chosenColour + ".mp3");
+  audio.play();
+}
+
+
+//Validates that the users pattern matches the game pattern
+function correctMove(currentLevel) {
+  if (gamePattern[currentLevel] === userPattern[currentLevel]) {
+    if (userPattern.length === gamePattern.length) {
+      //Plays the next button of the pattern after a 1 second wait
+      setTimeout(function() {
+        nextSequence()
+      }, 1000);
+    }
+  } else {
+    //Plays the wrong move audio
+    var audio = new Audio("sounds/wrong.mp3");
+    audio.play();
+
+    //Fades the buttons out and in if wrong move
+    $(".btn").fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
+
+    setTimeout(function() {
+      reloadStylesheets()
+    }, 1500);
+
+  }
+}
+
+
+function reloadStylesheets() {
+  location.reload();
+}
 
 
 // Press Play
