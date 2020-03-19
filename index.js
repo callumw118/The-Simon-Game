@@ -3,8 +3,6 @@ var gamePattern = [];
 var userPattern = [];
 var counter = 1;
 
-$(".counter").hide();
-
 function nextSequence() {
   //Generates random number between 0-3
   var randomNumber = Math.floor(Math.random() * 4);
@@ -75,7 +73,7 @@ $(".start-button").click(function() {
 
 //Updates the counter in the middle telling the user which level they are
 function updateScore() {
-  $(".counter").replaceWith("<h1 class=counter>" + counter + "</h1>");
+  $(".start-button").replaceWith("<h1 class=counter>" + counter + "</h1>");
   counter++;
 }
 
@@ -114,7 +112,6 @@ function correctMove(currentLevel) {
 
 
 function reloadStylesheets() {
-  $(".counter").hide();
 
   gamePattern = [];
   userPattern = [];
