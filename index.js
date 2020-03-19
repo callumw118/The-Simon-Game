@@ -3,6 +3,8 @@ var gamePattern = [];
 var userPattern = [];
 var counter = 1;
 
+$(".counter").hide();
+
 function nextSequence() {
   //Generates random number between 0-3
   var randomNumber = Math.floor(Math.random() * 4);
@@ -55,6 +57,8 @@ function animate() {
 
 //Detects when play button is pressed
 $(".start-button").click(function() {
+
+  $(this).hide();
   //Handles the button clicks - Stores the id of the button clicked as an array
   //Plays the sound and animation of button
   $(".btn").click(function() {
@@ -62,10 +66,9 @@ $(".start-button").click(function() {
     userPattern.push(chosenColour);
     flash(chosenColour);
     correctMove(userPattern.length - 1);
+
   });
 
-  //Changes the play button to the counter
-  $(this).replaceWith("<h1 class=counter>" + counter + "</h1>");
   nextSequence();
 });
 
@@ -111,7 +114,13 @@ function correctMove(currentLevel) {
 
 
 function reloadStylesheets() {
-  location.reload();
+  $(".counter").hide();
+
+  gamePattern = [];
+  userPattern = [];
+  counter = 1;
+
+  nextSequence();
 }
 
 
