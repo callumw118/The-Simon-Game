@@ -29,12 +29,12 @@ function flash(colour) {
   //Plays the sound for the colour that flahes
   setTimeout(function() {
     playSound(colour);
-  }, 100);
+  }, 200);
 
   //Animates button by making the background colour black again making it flash
   setTimeout(function() {
     $("." + colour).removeClass(colour + "-selected");
-  }, 300);
+  }, 500);
 
 
 }
@@ -50,13 +50,15 @@ function animate() {
     if (i > gamePattern.length) {
       clearInterval(interval);
     }
-  }, 1000);
+  }, 700);
 }
 
 //Detects when play button is pressed
 $(".start-button").click(function() {
 
+  //Removes Play button and replaces with counter
   $(this).hide();
+  $(".start-button").replaceWith("<h1 class=counter>" + counter + "</h1>");
   //Handles the button clicks - Stores the id of the button clicked as an array
   //Plays the sound and animation of button
   $(".btn").click(function() {
@@ -66,21 +68,20 @@ $(".start-button").click(function() {
     correctMove(userPattern.length - 1);
 
   });
-
+  //Plays game when start button pressed
   nextSequence();
 });
 
 
 //Updates the counter in the middle telling the user which level they are
 function updateScore() {
-  $(".start-button").replaceWith("<h1 class=counter>" + counter + "</h1>");
+  $(".counter").replaceWith("<h1 class=counter>" + counter + "</h1>");
   counter++;
 }
 
 
 //Plays the audio for the button that flashes
 function playSound(chosenColour) {
-
   var audio = new Audio("sounds/" + chosenColour + ".mp3");
   audio.play();
 }
@@ -93,7 +94,7 @@ function correctMove(currentLevel) {
       //Plays the next button of the pattern after a 1 second wait
       setTimeout(function() {
         nextSequence()
-      }, 1000);
+      }, 500);
     }
   } else {
     //Plays the wrong move audio
