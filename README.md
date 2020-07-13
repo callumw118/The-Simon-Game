@@ -4,3 +4,5 @@ The Simon Game is a memory skill game with lights and sounds which requires the 
 correct order.
 
 Still need to add an animation to the counter which fades in and down and refactor code as it is pretty tragic looking.
+
+Link - https://callumw118.github.io/The-Simon-Game/
